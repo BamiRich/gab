@@ -1,4 +1,4 @@
-const {check, validationResult,} = require('express-validator');
+const {check, validationResult} = require('express-validator');
 
 exports.signUpUserValidation = [
     check('username')
@@ -44,3 +44,15 @@ exports.userValidation = (req, res, next) => {
     const error = result[0].msg;
     res.json({success: false, message: error});
 };
+
+exports.signInUserValidation = [
+    check('username')
+        .trim()
+        .isString()
+        .withMessage('Must be a valid username')
+        .isLength({min: 2, max: 10})
+        .withMessage('Username must be within 2 to 10 character'),
+    check('password')
+        .trim().not().isEmpty().withMessage('password is required')
+]
+

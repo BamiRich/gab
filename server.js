@@ -3,6 +3,7 @@
 //Bring Express in.
 const express = require('express');
 const cors = require('cors');
+
 require('dotenv').config();
 
 //Reffrence/selector
@@ -16,7 +17,7 @@ const app = express();
 //Use Middilware
 app.use(cors());
 app.use(express.json());
-app.use('/', userRouter);
+app.use('/', userRouter); 
 
 //Do app.listing
 app.listen(process.env.PORT || 5000, () => {
